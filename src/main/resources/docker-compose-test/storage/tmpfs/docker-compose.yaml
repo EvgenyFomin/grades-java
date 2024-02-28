@@ -1,0 +1,8 @@
+version: "3"
+services:
+  serv1:
+    image: busybox
+    container_name: serv1
+    command: tail -F /dev/null
+    tmpfs:
+      - /testd

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  bridg1:
+    image: busybox
+    container_name: bridg1
+    command: tail -F /dev/null
+    networks:
+      custom_bridge:
+
+  bridg2:
+    image: busybox
+    container_name: bridg2
+    command: tail -F /dev/null
+    networks:
+      custom_bridge:
+
+  bridg3:
+    image: busybox
+    container_name: bridg3
+    command: tail -F /dev/null
+    networks:
+      custom_bridge2:
+
+  bridg4:
+    image: busybox
+    container_name: bridg4
+    command: tail -F /dev/null
+    networks:
+      custom_bridge2:
+
+networks:
+  custom_bridge:
+  custom_bridge2:

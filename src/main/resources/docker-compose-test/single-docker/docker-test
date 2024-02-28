@@ -1,0 +1,13 @@
+#!/bin/bash
+
+docker network create custom-bridge
+docker run -itd \
+--rm \
+--name nginx-test \
+--mount type=bind,source="$(pwd)"/bm,target=/bmd \
+--mount type=tmpfs,target=/tmpfsd \
+--mount source=vol,target=/vold \
+--mount source=volro,target=/volro \
+--network custom-bridge \
+--publish 8080:80 \
+nginx

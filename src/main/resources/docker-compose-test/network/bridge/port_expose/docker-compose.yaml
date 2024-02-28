@@ -1,0 +1,18 @@
+version: "3"
+services:
+  bridg1:
+    image: nginx
+    container_name: bridg1
+    networks:
+      custom_bridge:
+
+  bridg2:
+    image: nginx
+    container_name: bridg2
+    ports:
+      - "8080:80"
+    networks:
+      custom_bridge:
+
+networks:
+  custom_bridge:

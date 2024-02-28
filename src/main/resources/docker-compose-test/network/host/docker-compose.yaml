@@ -1,0 +1,12 @@
+version: "3"
+services:
+  hst1:
+    image: nginx
+    container_name: hst1
+    network_mode: host
+
+  hst2:
+    image: busybox
+    container_name: hst2
+    network_mode: host
+    command: tail -F /dev/null

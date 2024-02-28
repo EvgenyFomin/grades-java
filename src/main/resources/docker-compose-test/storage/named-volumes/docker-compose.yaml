@@ -1,0 +1,18 @@
+version: "3"
+services:
+  serv1:
+    image: busybox
+    container_name: serv1
+    command: tail -F /dev/null
+    volumes:
+      - myapp:/testd
+
+  serv2:
+    image: busybox
+    container_name: serv2
+    command: tail -F /dev/null
+    volumes:
+      - myapp:/testd2:ro
+
+volumes:
+  myapp:

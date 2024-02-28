@@ -1,0 +1,33 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql-as
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123123123
+    ports:
+      - "3310:3306"
+    volumes:
+      - "./data/mysql:/var/lib/mysql"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+
+  core:
+    image: advanced-study/core:v1
+    container_name: as-core
+    restart: always
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+
+  web:
+    image: advanced-study/web:v1
+    container_name: as-web
+    restart: always
+    ports:
+      - "4210:80"
