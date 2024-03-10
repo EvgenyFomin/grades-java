@@ -1,0 +1,8 @@
+syntax = "proto3";
+import "PersonComment.proto";
+option java_multiple_files = true;
+package ru.protei.grpc;
+
+service BidirectionalCommentService {
+  rpc subscribe(stream PersonSubscribeRequest) returns (stream PersonSubscribeResponse);
+}

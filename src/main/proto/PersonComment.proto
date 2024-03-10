@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package ru.protei.grpc;
+
+message PersonRequest {
+  int64 id = 1;
+}
+
+message Comment {
+  int64 id = 1;
+  string comment = 2;
+}
+
+message Person {
+  int64 id = 1;
+  string name = 2;
+  repeated Comment comments = 3;
+}
+
+message PersonResponse {
+  Person person = 1;
+}
+
+message PersonSubscribeRequest {
+  repeated int64 personIds = 1;
+}
+
+message PersonSubscribeResponse {
+  repeated Person people = 1;
+}
