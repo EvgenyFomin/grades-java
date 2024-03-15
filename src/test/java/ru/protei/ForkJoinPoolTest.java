@@ -15,6 +15,9 @@ public class ForkJoinPoolTest {
 
     @Test
     public void testForkJoinPoolInCompletableFuture() {
+//        Выставив parallelism в 1, fjp создаст количество потоков = количеству задач.
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "2");
+
         System.out.println("CPU Core: " + Runtime.getRuntime().availableProcessors());
         System.out.println("CommonPool Parallelism: " + ForkJoinPool.commonPool().getParallelism());
         System.out.println("CommonPool Common Parallelism: " + ForkJoinPool.getCommonPoolParallelism());
