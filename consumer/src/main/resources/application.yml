@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: kafka-example-consumer
+  kafka:
+    bootstrap-servers: kafka:29092,kafka2:29093
+    listener:
+      ack-mode: record
+    producer:
+      client-id: ${spring.application.name}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # Очередь для исключений
+      value-serializer: ru.protei.consumer.config.DltMessageSerializer
+      retries: 3
+    consumer:
+      autoOffsetReset: earliest
+      keyDeserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      valueDeserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+    properties:
+      spring.json.value.default.type: ru.protei.common.dto.JsonMessage
+      spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+      spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+
+kafka:
+  topics:
+    test-topic: topic1
