@@ -16,8 +16,7 @@ import ru.protei.common.dto.JsonMessage;
 public class KafkaConsumerListeners {
 
     @KafkaListener(
-            id = "consumer-group-1",
-            groupId = "1group",
+            groupId = "group1",
             topics = "${kafka.topics.test-topic}",
             containerFactory = "kafkaListenerContainerFactory")
     public void handle(@Payload JsonMessage message) {
@@ -25,22 +24,36 @@ public class KafkaConsumerListeners {
     }
 
     @KafkaListener(
-            id = "consumer-group-2",
-            groupId = "2group",
+            groupId = "group2",
             topics = "${kafka.topics.test-topic}",
             containerFactory = "kafkaListenerContainerFactory")
     public void handle2(@Payload JsonMessage message) {
         readMessage(message, "listener2");
     }
 
-//    @KafkaListener(
-//            id = "consumer-group-3",
-//            topics = "${kafka.topics.test-topic}",
-//            groupId = "2",
-//            containerFactory = "kafkaListenerContainerFactory")
-//    public void handle3(@Payload JsonMessage message) {
-//        readMessage(message, "listener3");
-//    }
+    @KafkaListener(
+            topics = "${kafka.topics.test-topic}",
+            groupId = "group2",
+            containerFactory = "kafkaListenerContainerFactory")
+    public void handle3(@Payload JsonMessage message) {
+        readMessage(message, "listener3");
+    }
+
+    @KafkaListener(
+            topics = "${kafka.topics.test-topic}",
+            groupId = "group2",
+            containerFactory = "kafkaListenerContainerFactory")
+    public void handle4(@Payload JsonMessage message) {
+        readMessage(message, "listener4");
+    }
+
+    @KafkaListener(
+            topics = "${kafka.topics.test-topic}",
+            groupId = "group2",
+            containerFactory = "kafkaListenerContainerFactory")
+    public void handle5(@Payload JsonMessage message) {
+        readMessage(message, "listener5");
+    }
 
     public void readMessage(JsonMessage message, String source) {
         log.info("read by {}", source);
@@ -52,5 +65,4 @@ public class KafkaConsumerListeners {
             throw new RuntimeException("Получено сообщение с номером кратным 100");
         }
     }
-
 }

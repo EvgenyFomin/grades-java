@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import ru.protei.common.dto.JsonMessage;
 
@@ -22,14 +23,16 @@ public class KafkaProducer {
     private final KafkaTemplate<Object, Object> kafkaTemplate;
 
     public void sendMessages() throws ExecutionException, InterruptedException {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             messageNumber++;
             JsonMessage jsonMessage = JsonMessage.builder()
                     .number(messageNumber)
                     .message("message number " + messageNumber)
                     .build();
             Thread.sleep(1000);
-            kafkaTemplate.send(topic, String.valueOf(messageNumber), jsonMessage);
+            kafkaTemplate.send(topic, 0, jsonMessage);
+//            Синхронная отправка сообщений
+//            SendResult<Object, Object> objectObjectSendResult = kafkaTemplate.send(topic, 2, jsonMessage).get();
             log.info("Отправлено сообщение номер {}", messageNumber);
         }
     }
