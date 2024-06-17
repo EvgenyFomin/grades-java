@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
-import java.util.function.Function;
 
 public class CompletableFutureTest {
     @Test
@@ -37,47 +36,40 @@ public class CompletableFutureTest {
 
     @Test
     public void thenRunTest() throws ExecutionException, InterruptedException {
-        Thread thread = new Thread(() -> {
-            ExecutorService executorService = Executors.newSingleThreadExecutor();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-            executorService.submit(() -> System.out.println("hello"));
-
-            CompletableFuture<Void> future = CompletableFuture
-                    .runAsync(() -> {
-//                        try {
-//                            TimeUnit.SECONDS.sleep(2);
-//                        } catch (InterruptedException e) {
-//                            throw new RuntimeException(e);
-//                        }
-                        System.out.println("Future Thread: " + Thread.currentThread().getName());
-                    })
-                    .thenRunAsync(() -> {
+        CompletableFuture<Void> future = CompletableFuture
+                .runAsync(() -> {
+                        try {
+                            TimeUnit.SECONDS.sleep(2);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    System.out.println("Future Thread: " + Thread.currentThread().getName());
+                })
+                .thenRun(() -> {
 //                    try {
 //                        TimeUnit.SECONDS.sleep(5);
 //                    } catch (InterruptedException e) {
 //                        throw new RuntimeException(e);
 //                    }
-                        System.out.println("Stage 2 Future Thread: " + Thread.currentThread().getName());
-                    }, executorService)
-                    .thenRun(() -> System.out.println("Stage 3 Future Thread: " + Thread.currentThread().getName()))
-                    .thenRun(() -> System.out.println("Stage 4 Future Thread: " + Thread.currentThread().getName()))
-                    .thenRun(() -> {
+                    System.out.println("Stage 2 Future Thread: " + Thread.currentThread().getName());
+                })
+                .thenRun(() -> System.out.println("Stage 3 Future Thread: " + Thread.currentThread().getName()))
+                .thenRun(() -> System.out.println("Stage 4 Future Thread: " + Thread.currentThread().getName()))
+                .thenRunAsync(() -> {
 //                        try {
-//                            TimeUnit.SECONDS.sleep(10);
+//                            TimeUnit.SECONDS.sleep(5);
 //                        } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
 //                        }
-                        System.out.println("Stage 5 Future Thread: " + Thread.currentThread().getName());
-                    });
-        });
-
-        thread.start();
-        thread.join();
+                    System.out.println("Stage 5 Future Thread: " + Thread.currentThread().getName());
+                }, executorService);
 
         System.out.println("sleeping...");
 
         Thread.sleep(5000);
-//        future.get();
+        future.get();
     }
 
     @Test
@@ -148,12 +140,20 @@ public class CompletableFutureTest {
         completableFutures.add(getRandomNumber(30, 4));
 
         System.out.println(CompletableFuture.anyOf(completableFutures.toArray(new CompletableFuture[]{})).get());
+        System.out.println("---");
+        completableFutures.forEach(cf -> {
+            try {
+                System.out.println(cf.get());
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Test
     public void eitherTest() throws ExecutionException, InterruptedException {
-        CompletableFuture<Integer> randomNumber = getRandomNumber(10, 10);
-        CompletableFuture<Integer> integerCompletableFuture = getRandomNumber(15, 1)
+        CompletableFuture<Integer> randomNumber = getRandomNumber(10, 1);
+        CompletableFuture<Integer> integerCompletableFuture = getRandomNumber(15, 3)
                 .applyToEither(randomNumber, s -> s);
 
         System.out.println(integerCompletableFuture.get());
@@ -209,8 +209,9 @@ public class CompletableFutureTest {
     public void completeTest() throws ExecutionException, InterruptedException {
         CompletableFuture<Integer> future = CompletableFuture
                 .supplyAsync(() -> "Future Thread: " + Thread.currentThread().getName())
-                .thenComposeAsync(r -> getRandomNumber(10, 4));
+                .thenComposeAsync(r -> getRandomNumber(10, 2));
 
+//        Thread.sleep(3000);
         future.complete(-1);
 
         System.out.println(future.get());
