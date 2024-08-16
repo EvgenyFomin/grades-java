@@ -1,9 +1,13 @@
 package ru.protei;
 
-import java.sql.SQLException;
+import jakarta.persistence.*;
+import org.hibernate.collection.spi.PersistentBag;
+
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        System.out.println();
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+
     }
 }
