@@ -43,10 +43,11 @@ public class JpaTest {
             bmw.setName("bmw");
 
             User user = new User();
-            em.persist(user);
 
             user.setName("hello");
             user.setCars(new ArrayList<>(List.of(mercedes, bmw)));
+
+            em.persist(user);
 
             System.out.println("persist end");
         });
@@ -215,13 +216,9 @@ public class JpaTest {
             System.out.println("after remove");
         });
         User user = users.get(0);
-        try {
-            System.out.println(user.getCars());
-            System.out.println("Cars field is of ArrayList class=" + Objects.equals(user.getCars().getClass(), ArrayList.class));
-            System.out.println("Cars field is of PersistentBag class=" + Objects.equals(user.getCars().getClass(), PersistentBag.class));
-        } catch (LazyInitializationException exception) {
-            System.err.println("Session was closed!");
-        }
+        System.out.println(user.getCars());
+        System.out.println("Cars field is of ArrayList class=" + Objects.equals(user.getCars().getClass(), ArrayList.class));
+        System.out.println("Cars field is of PersistentBag class=" + Objects.equals(user.getCars().getClass(), PersistentBag.class));
     }
 
     @Test
@@ -234,6 +231,32 @@ public class JpaTest {
             System.out.println("after remove. id=" + user.getId());
             em.persist(user);
             System.out.println("after persist. id=" + user.getId());
+        });
+    }
+
+    @Test
+    public void testDetach() {
+        Long id = createUser();
+        withTransaction(em -> {
+            User user = em.find(User.class, id);
+            em.detach(user);
+            try {
+                user.getCars().iterator();
+            } catch (LazyInitializationException exception) {
+                System.err.println("----Session was closed!");
+            }
+            user.setName("testDetach");
+            System.out.println("end of testDetach1");
+        });
+        withTransaction(em -> {
+            User user = em.find(User.class, id);
+            System.out.println("detach");
+            em.detach(user);
+            System.out.println("setName");
+            user.setName("testDetach");
+            System.out.println("merge");
+            em.merge(user);
+            System.out.println("end of testDetach2");
         });
     }
 
@@ -278,7 +301,7 @@ public class JpaTest {
 
         User userToSave = new User();
         userToSave.setId(id);
-        userToSave.setName("testSaveOrUpdate");
+        userToSave.setName("testSave");
         userToSave.setCars(new ArrayList<>(user.getCars()));
 
         withTransaction(em -> {
@@ -299,6 +322,7 @@ public class JpaTest {
             bmw.setName("bmw");
 
             user.setName("hello");
+            user.setLastName("hello2");
             user.setCars(List.of(mercedes, bmw));
 
             return user.getId();
