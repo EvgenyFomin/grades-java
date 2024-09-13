@@ -10,7 +10,7 @@
 
         <properties>
             <!-- Database connection settings -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/orm_test" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/hibernate" />
             <property name="jakarta.persistence.jdbc.user" value="fomin_e" />
             <property name="jakarta.persistence.jdbc.password" value="123123123" />
 
