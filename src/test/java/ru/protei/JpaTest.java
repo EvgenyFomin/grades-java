@@ -1,31 +1,29 @@
 package ru.protei;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.*;
 import org.junit.jupiter.api.Test;
-import ru.protei.model.Cart;
-import ru.protei.model.Comment;
-import ru.protei.model.Product;
+import ru.protei.model.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class JpaTest {
     @Test
     public void testPersistAtFirst() {
         withTransaction(em -> {
-//            Cart cart = new Cart();
-//            cart.setName("test-cart");
-//            em.persist(cart);
+            Cart cart = new Cart();
+            cart.setName("test-cart");
+            em.persist(cart);
 
             Product product = new Product();
             product.setName("test-product");
             product.setPrice(100.0);
-            em.persist(product);
 
-//            cart.setProducts(List.of(product));
+            cart.setProducts(Set.of(product));
 
             Comment comment1 = new Comment();
             comment1.setText("comment1");
@@ -36,24 +34,51 @@ public class JpaTest {
             Comment comment3 = new Comment();
             comment3.setText("comment3");
 
-            product.setComments(List.of(comment1, comment2, comment3));
+            product.setComments(Set.of(comment1, comment2, comment3));
         });
     }
 
     @Test
-    public void requests() {
+    public void requestCarts() {
         withTransaction(em -> {
-            Cart cart = em.find(Cart.class, 3L);
-            System.out.println("before");
-            System.out.println(cart);
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Cart> criteriaQuery = cb.createQuery(Cart.class);
+            Root<Cart> cartRoot = criteriaQuery.from(Cart.class);
+            cartRoot.fetch(Cart_.PRODUCTS).fetch(Product_.COMMENTS);
+            criteriaQuery.select(cartRoot);
+            List<Cart> carts = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(carts.size());
+        });
+    }
 
-//            CriteriaBuilder cb = em.getCriteriaBuilder();
-//            CriteriaQuery<Cart> cq = cb.createQuery(Cart.class);
-//            cq.select(cq.from(Cart.class));
-//            TypedQuery<Cart> query = em.createQuery(cq);
-//            List<Cart> carts = query.getResultList();
-//            System.out.println("before");
-//            System.out.println(carts);
+    @Test
+    public void requestProducts() {
+        withTransaction(em -> {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Product> criteriaQuery = cb.createQuery(Product.class);
+            Root<Product> productRoot = criteriaQuery.from(Product.class);
+            productRoot.join(Product_.COMMENTS, JoinType.LEFT);
+            criteriaQuery.select(productRoot);
+            List<Product> products = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(products.size());
+            System.out.println(products.stream().map(Product::getId).collect(Collectors.toList()));
+//            System.out.println(products.stream().map(product -> product.getComments().size()).collect(Collectors.toSet()));
+        });
+    }
+
+    @Test
+    public void requestComments() {
+        withTransaction(em -> {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Comment> criteriaQuery = cb.createQuery(Comment.class);
+            Root<Comment> commentRoot = criteriaQuery.from(Comment.class);
+            commentRoot.fetch(Comment_.PRODUCT);
+            criteriaQuery.select(commentRoot)
+                    .where(cb.equal(commentRoot.get(Comment_.PRODUCT).get(Product_.NAME), "test-product"))
+            ;
+            List<Comment> comments = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(comments.stream().map(Comment::getId).collect(Collectors.toSet()));
+            System.out.println(comments.stream().map(comment -> comment.getProduct() == null ? "null" : comment.getProduct().getName()).collect(Collectors.toSet()));
         });
     }
 

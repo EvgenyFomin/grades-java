@@ -6,14 +6,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "product")
+@Table(name = "cart")
 @Getter
 @Setter
 @ToString
-public class Product {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +20,11 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private Double price;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false, updatable = false, insertable = false)
-    private Set<Comment> comments;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "cart_to_product",
+            joinColumns = @JoinColumn(name = "cart_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products;
 }

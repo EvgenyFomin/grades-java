@@ -18,6 +18,6 @@ public class Comment {
     @Column(name = "comment_text")
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Product product;
 }
