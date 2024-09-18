@@ -18,6 +18,9 @@ public class Comment {
     @Column(name = "comment_text")
     private String text;
 
+    @Column(name = "product_id", nullable = false, updatable = false, insertable = false)
+    private Long productId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 }

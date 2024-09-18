@@ -82,6 +82,34 @@ public class JpaTest {
         });
     }
 
+    @Test
+    public void requestCommentsSubQuery() {
+        withTransaction(em -> {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Comment> criteriaQuery = cb.createQuery(Comment.class);
+            Root<Comment> commentRoot = criteriaQuery.from(Comment.class);
+            Subquery<Long> subquery = criteriaQuery.subquery(Long.class);
+            Root<Product> productRoot = subquery.from(Product.class);
+            subquery.select(productRoot.get(Product_.ID)).where(cb.equal(productRoot.get(Product_.NAME), "product-to-find"));
+            criteriaQuery.select(commentRoot).where(cb.in(commentRoot.get(Comment_.PRODUCT_ID)).value(subquery));
+            List<Comment> carts = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(carts.stream().map(Comment::getId).collect(Collectors.toSet()));
+        });
+    }
+
+    @Test
+    public void requestCartsForProducts() {
+        withTransaction(em -> {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Cart> criteriaQuery = cb.createQuery(Cart.class);
+            Root<Cart> cartRoot = criteriaQuery.from(Cart.class);
+            Join<Cart, Product> join = cartRoot.join(Cart_.PRODUCTS);
+            criteriaQuery.select(cartRoot).where(cb.equal(join.get(Product_.NAME), "product-to-find"));
+            List<Cart> carts = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(carts.stream().map(Cart::getId).collect(Collectors.toSet()));
+        });
+    }
+
     private void withTransaction(Consumer<EntityManager> entityManagerConsumer) {
         withTransaction(em -> {
             entityManagerConsumer.accept(em);
