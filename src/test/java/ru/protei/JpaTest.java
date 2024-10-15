@@ -47,7 +47,18 @@ public class JpaTest {
             cartRoot.fetch(Cart_.PRODUCTS).fetch(Product_.COMMENTS);
             criteriaQuery.select(cartRoot);
             List<Cart> carts = em.createQuery(criteriaQuery).getResultList();
-            System.out.println(carts.size());
+            System.out.println(carts);
+        });
+    }
+
+    @Test
+    public void requestCartsJpql() {
+        withTransaction(em -> {
+            TypedQuery<Cart> query = em.createQuery("select c from Cart c " +
+                    "inner join fetch c.products pr " +
+                    "inner join fetch pr.comments ", Cart.class);
+            List<Cart> carts = query.getResultList();
+            System.out.println(carts);
         });
     }
 
@@ -57,12 +68,20 @@ public class JpaTest {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Product> criteriaQuery = cb.createQuery(Product.class);
             Root<Product> productRoot = criteriaQuery.from(Product.class);
-            productRoot.join(Product_.COMMENTS, JoinType.LEFT);
-            criteriaQuery.select(productRoot);
+            criteriaQuery.select(productRoot).where(cb.gt(cb.size(productRoot.get(Product_.COMMENTS)), 3));
             List<Product> products = em.createQuery(criteriaQuery).getResultList();
             System.out.println(products.size());
             System.out.println(products.stream().map(Product::getId).collect(Collectors.toList()));
-//            System.out.println(products.stream().map(product -> product.getComments().size()).collect(Collectors.toSet()));
+        });
+    }
+
+    @Test
+    public void requestProductsJpql() {
+        withTransaction(em -> {
+            TypedQuery<Product> query = em.createQuery("from Product p where size(p.comments) > 3", Product.class);
+            List<Product> products = query.getResultList();
+            System.out.println(products.size());
+            System.out.println(products.stream().map(Product::getId).collect(Collectors.toList()));
         });
     }
 
