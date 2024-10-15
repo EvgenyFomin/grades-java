@@ -9,7 +9,6 @@ import lombok.ToString;
 @Table(name = "comment")
 @Getter
 @Setter
-@ToString
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +22,13 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", productId=" + productId +
+                '}';
+    }
 }

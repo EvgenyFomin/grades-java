@@ -47,9 +47,17 @@ public class JpaTest {
             cartRoot.fetch(Cart_.PRODUCTS).fetch(Product_.COMMENTS);
             criteriaQuery.select(cartRoot);
             List<Cart> carts = em.createQuery(criteriaQuery).getResultList();
-            System.out.println(carts.size());
+            System.out.println(carts);
         });
     }
+
+//    @Test
+//    public void requestCartsJpql() {
+//        withTransaction(em -> {
+//            em.createQuery();
+//            System.out.println(carts.size());
+//        });
+//    }
 
     @Test
     public void requestProducts() {
