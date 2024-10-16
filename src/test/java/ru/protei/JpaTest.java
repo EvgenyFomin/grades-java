@@ -34,7 +34,19 @@ public class JpaTest {
             Comment comment3 = new Comment();
             comment3.setText("comment3");
 
-            product.setComments(Set.of(comment1, comment2, comment3));
+            product.setComments(List.of(comment1, comment2, comment3));
+        });
+    }
+
+    @Test
+    public void testGettingProducts() {
+        withTransaction(em -> {
+            TypedQuery<Product> query = em.createQuery("from Product p " +
+                    "left join fetch p.comments " +
+                    "left join fetch p.images " +
+                    "where p.id = 13", Product.class);
+            List<Product> carts = query.getResultList();
+            System.out.println(carts);
         });
     }
 
