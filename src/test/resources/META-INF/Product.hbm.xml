@@ -4,16 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="ru.protei.model.Cart" table="cart">
+    <class name="ru.protei.model.Product" table="product">
         <id name="id" type="java.lang.Long" column="id">
             <generator class="identity"/>
         </id>
 
         <property name="name" column="name" type="java.lang.String"/>
+        <property name="price" column="price" type="java.lang.Double"/>
 
-        <set name="products" table="cart_to_product" cascade="all" lazy="false" fetch="join">
-            <key column="cart_id" />
-            <many-to-many column="product_id" class="ru.protei.model.Product"/>
+        <set name="comments" cascade="all" lazy="false" fetch="join">
+            <key column="product_id" />
+            <one-to-many class="ru.protei.model.Comment"/>
         </set>
     </class>
 </hibernate-mapping>

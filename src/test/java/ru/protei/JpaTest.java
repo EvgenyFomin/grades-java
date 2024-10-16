@@ -51,13 +51,13 @@ public class JpaTest {
         });
     }
 
-//    @Test
-//    public void requestCartsJpql() {
-//        withTransaction(em -> {
-//            em.createQuery();
-//            System.out.println(carts.size());
-//        });
-//    }
+    @Test
+    public void requestEm() {
+        withTransaction(em -> {
+            Cart cart = em.find(Cart.class, 2L);
+            System.out.println(cart);
+        });
+    }
 
     @Test
     public void requestProducts() {
