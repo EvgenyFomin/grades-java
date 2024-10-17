@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+                 version="1.0">
+    <package>ru.protei.model</package>
+
+    <entity class="ru.protei.model.Cart" name="Cart">
+        <table name="cart"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="name">
+                <column name="name"/>
+            </basic>
+            <many-to-many name="products" fetch="EAGER">
+                <join-table name="cart_to_product">
+                    <join-column name="cart_id"/>
+                    <inverse-join-column name="product_id"/>
+                </join-table>
+                <cascade><cascade-all/></cascade>
+            </many-to-many>
+        </attributes>
+    </entity>
+
+    <entity class="ru.protei.model.Product" name="Product">
+        <table name="product"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="name">
+                <column name="name"/>
+            </basic>
+            <basic name="price">
+                <column name="price"/>
+            </basic>
+            <one-to-many name="comments" fetch="EAGER">
+                <join-table name="comment">
+                    <join-column name="product_id"/>
+                    <inverse-join-column name="id"/>
+                </join-table>
+                <cascade><cascade-all/></cascade>
+            </one-to-many>
+        </attributes>
+    </entity>
+
+    <entity class="ru.protei.model.Comment" name="Comment">
+        <table name="comment"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="text">
+                <column name="comment_text"/>
+            </basic>
+            <basic name="productId">
+                <column name="product_id" nullable="false" updatable="false" insertable="false"/>
+            </basic>
+            <many-to-one name="product">
+                <join-column name="product_id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>
