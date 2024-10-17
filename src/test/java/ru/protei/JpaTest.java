@@ -34,7 +34,7 @@ public class JpaTest {
             Comment comment3 = new Comment();
             comment3.setText("comment3");
 
-            product.setComments(List.of(comment1, comment2, comment3));
+            product.setComments(Set.of(comment1, comment2, comment3));
         });
     }
 
@@ -56,9 +56,10 @@ public class JpaTest {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Cart> criteriaQuery = cb.createQuery(Cart.class);
             Root<Cart> cartRoot = criteriaQuery.from(Cart.class);
-            cartRoot.fetch(Cart_.PRODUCTS).fetch(Product_.COMMENTS);
+//            cartRoot.fetch(Cart_.PRODUCTS).fetch(Product_.COMMENTS);
             criteriaQuery.select(cartRoot);
             List<Cart> carts = em.createQuery(criteriaQuery).getResultList();
+            System.out.println(carts.size());
             System.out.println(carts);
         });
     }

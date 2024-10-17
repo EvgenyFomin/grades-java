@@ -25,9 +25,9 @@ public class Product {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false, updatable = false, insertable = false)
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, updatable = false, insertable = false)
-    private List<Image> images;
+    private Set<Image> images;
 }
