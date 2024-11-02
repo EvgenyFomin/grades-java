@@ -28,6 +28,7 @@ public class JpaTest {
             Comment comment1 = new Comment();
             comment1.setText("comment1");
 
+
             Comment comment2 = new Comment();
             comment2.setText("comment2");
 
