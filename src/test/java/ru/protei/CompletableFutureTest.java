@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.*;
 
@@ -115,6 +116,42 @@ public class CompletableFutureTest {
                 .thenAcceptBoth(getRandomNumber(10), (i1, i2) -> System.out.println(i1 + i2));
 
         future.get();
+    }
+
+    @Test
+    public void thenAcceptBothTest2() throws ExecutionException, InterruptedException {
+        CompletableFuture<Void> future = longOperation()
+                .thenAcceptBoth(shortOperation(), (s, i) -> System.out.println(s + i))
+                .exceptionally(t -> {
+                    System.out.println("Exception: " + t.getMessage());
+                    return null;
+                });
+
+        future.get();
+    }
+
+    private CompletableFuture<String> longOperation() {
+        return CompletableFuture
+                .supplyAsync(() -> {
+                    try {
+                        TimeUnit.SECONDS.sleep(10);
+                        return "asdf";
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+    }
+
+    private CompletableFuture<Integer> shortOperation() {
+        return CompletableFuture
+                .supplyAsync(() -> {
+                    try {
+                        TimeUnit.SECONDS.sleep(2);
+                        throw new RuntimeException();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 
     @Test
