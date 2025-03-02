@@ -7,6 +7,8 @@ import com.hazelcast.core.HazelcastInstance;
 import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
@@ -16,8 +18,9 @@ public class Client {
         Map<Integer, String> map = client.getMap("mymap");
         map.put(1, "v1");
 
-        Executor executor = Executors.newScheduledThreadPool(1);
-        executor.execute();
-        System.out.println(map.size());
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(() -> {
+            System.out.println(map.size());
+        }, 0, 2, TimeUnit.SECONDS);
     }
 }
