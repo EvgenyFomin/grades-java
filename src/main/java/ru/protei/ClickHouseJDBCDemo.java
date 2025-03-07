@@ -11,13 +11,13 @@ public class ClickHouseJDBCDemo {
         conn = DriverManager.getConnection(DB_URL, "default", "changeme");
     }
 
-    public Integer getAvgSalary() throws SQLException {
+    public Double getAvgSalary() throws SQLException {
         String query = "SELECT avg(salary) FROM user where id < ?";
         try (PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setInt(1, 10);
             try (ResultSet rs = statement.executeQuery()) {
                 rs.next();
-                return rs.getInt(1);
+                return rs.getDouble(1);
             }
         }
     }
