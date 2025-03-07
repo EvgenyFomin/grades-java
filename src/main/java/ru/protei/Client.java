@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
+//        Добавить настройки порта и хоста
         ClientConfig clientConfig = new ClientConfig();
         HazelcastInstance client = HazelcastClient.newHazelcastClient(clientConfig);
 
