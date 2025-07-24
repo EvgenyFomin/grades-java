@@ -1,13 +1,11 @@
 package ru.protei.processor;
 
+import com.google.auto.service.AutoService;
 import ru.protei.annotation.JdbcColumn;
 import ru.protei.annotation.JdbcEntity;
 import ru.protei.annotation.JdbcOneToMany;
 
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
+import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
@@ -17,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
+@AutoService(Processor.class)
 @SupportedAnnotationTypes("ru.protei.annotation.JdbcEntity")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 public class MetaInfoProcessor extends AbstractProcessor {

@@ -5,6 +5,7 @@ import ru.protei.model.Person_;
 
 public class Main {
     public static void main(String[] args) {
-        new A();
+        System.out.println(Car_.Columns.NAME);
+        System.out.println(Person_.Fields.CARLIST);
     }
 }
