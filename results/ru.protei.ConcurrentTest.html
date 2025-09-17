@@ -1,0 +1,2682 @@
+
+<html>
+<head>
+<title>Java Concurrency Stress test report</title>
+ <style type="text/css">
+   * { font-family: Arial; }
+   table { font-size: 9pt; }
+   a { color: #000000; }
+   .progress { padding: 0px; }
+   .header { text-align: left; }
+   .section1 { font-size: 12pt; background-color: #BDB76B; color: #000000; font-weight: bold;}
+   .section2 { font-size: 12pt; background-color: #F0E68C; color: #000000; font-weight: bold;}
+   .cell1 { background-color: #FAFAD2; }
+   .cell2 { background-color: #EEE8AA; }
+   .passedProgress { background-color: #00AA00; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .failedProgress { background-color: #FF0000; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .passed { color: #00AA00; text-align: center; font-weight: bold; }
+   .failed { color: #FF0000; text-align: center; font-weight: bold; }
+   .interesting { color: #0000FF; text-align: center; font-weight: bold; }
+   .spec { color: #AAAA00; text-align: center; font-weight: bold; }
+   .endResult { font-size: 48pt; text-align: center; font-weight: bold; }
+ </style>
+</head>
+<body>
+<h1>ru.protei.ReadWriteTest</h1>
+<h3>Description and references</h3>
+<p>Classic test that demonstrates memory reordering</p>
+<h3>Environment</h3>
+<table>
+<tr>
+<td nowrap>java.specification.name</td>
+<td nowrap>Java Platform API Specification</td>
+</tr>
+<tr>
+<td nowrap>java.specification.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.specification.version</td>
+<td nowrap>17</td>
+</tr>
+<tr>
+<td nowrap>java.vendor</td>
+<td nowrap>Ubuntu</td>
+</tr>
+<tr>
+<td nowrap>java.version</td>
+<td nowrap>17.0.16</td>
+</tr>
+<tr>
+<td nowrap>java.vm.name</td>
+<td nowrap>OpenJDK 64-Bit Server VM</td>
+</tr>
+<tr>
+<td nowrap>java.vm.vendor</td>
+<td nowrap>Ubuntu</td>
+</tr>
+<tr>
+<td nowrap>java.vm.version</td>
+<td nowrap>17.0.16+8-Ubuntu-0ubuntu122.04.1</td>
+</tr>
+<tr>
+<td nowrap>os.arch</td>
+<td nowrap>amd64</td>
+</tr>
+<tr>
+<td nowrap>os.name</td>
+<td nowrap>Linux</td>
+</tr>
+<tr>
+<td nowrap>os.version</td>
+<td nowrap>5.15.0-153-generic</td>
+</tr>
+</table>
+<h3>Results</h3>
+<table cellpadding=5 border=1>
+<tr>
+<th>Compilation Mode</th>
+<th>Scheduling Class</th>
+<th>Java Options</th>
+<th>Status</th>
+<th colspan=0>Observed States</th>
+</tr>
+<tr>
+<th colspan=4></th>
+</tr>
+<tr>
+<td colspan=4></td>
+</tr>
+<tr>
+<td colspan=4></td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1027180449]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1102022291]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1329560467]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1598381157]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=82730956]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1226784795]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1818098867]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2103521430]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=338935255]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=786645733]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1295315898]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=189943587]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=23688192]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=335463794]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=779530858]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1197731032]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1612922335]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1924625788]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=844064267]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=877594424]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1660705609]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1749277435]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=624993020]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=815381258]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=944376656]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1858482206]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2014989387]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=490348844]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=667265974]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=952821049]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1185038227]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1622778048]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1948225412]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=703831495]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=792345979]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1120829699]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1300386003]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=266398973]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=713624370]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=984464449]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1631592206]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1722792457]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1821180473]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=246323062]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=444453954]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1255659886]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1578787638]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1807202663]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=310125059]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=721420366]</pre>
+</td>
+<td align='center' bgColor='red '>SKIPPED</td>
+</tr>
+</table>
+<h3>Messages</h3>
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1027180449]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1102022291]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1329560467]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1598381157]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=82730956]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1226784795]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1818098867]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2103521430]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=338935255]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=786645733]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1295315898]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=189943587]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=23688192]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=335463794]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=779530858]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1197731032]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1612922335]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1924625788]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=844064267]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C1
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=877594424]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1660705609]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1749277435]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=624993020]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=815381258]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=944376656]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1858482206]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2014989387]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=490348844]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=667265974]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=952821049]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1185038227]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1622778048]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1948225412]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=703831495]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=792345979]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1120829699]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1300386003]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=266398973]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=713624370]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C1
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=984464449]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1631592206]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1722792457]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1821180473]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=246323062]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:+UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=444453954]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1255659886]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1578787638]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1807202663]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=310125059]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<p><b>
+<pre>split
+    actor1: C2
+    actor2: C2
+</pre>
+<pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre>
+
+<pre>[-javaagent:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/lib/idea_rt.jar=41897:/home/fomin_e/Programs/new-idea/idea-IU-241.14494.240/bin, -Dfile.encoding=UTF-8, -XX:-UseBiasedLocking, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=721420366]</pre>
+</b></p>
+<pre>
+Test sanity check failed, skipping
+java.lang.NoClassDefFoundError: ru/protei/ConcurrentTest$DataHolder
+	at ru.protei.ConcurrentTest_jcstress.jcstress_sanityCheck_API(ConcurrentTest_jcstress.java:81)
+	at ru.protei.ConcurrentTest_jcstress.sanityCheck(ConcurrentTest_jcstress.java:30)
+	at org.openjdk.jcstress.infra.runners.Runner.run(Runner.java:64)
+	at org.openjdk.jcstress.ForkedMain.main(ForkedMain.java:79)
+Caused by: java.lang.ClassNotFoundException: ru.protei.ReadWriteTest$DataHolder
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 4 more
+</pre>
+
+<h3>VM Output Streams</h3>
+<h3>VM Error Streams</h3>
+</body>
+</html>
