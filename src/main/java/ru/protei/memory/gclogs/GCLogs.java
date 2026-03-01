@@ -1,6 +1,6 @@
 package ru.protei.memory.gclogs;
 
-public class Main {
+public class GCLogs {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Начало демонстрации GC логов...");
 

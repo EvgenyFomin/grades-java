@@ -3,7 +3,7 @@ package ru.protei.memory.heapdump;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class OOM {
     public static void main(String[] args) {
         List<byte[]> list = new ArrayList<>();
         while (true) {
