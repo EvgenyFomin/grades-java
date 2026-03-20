@@ -7,7 +7,7 @@ PATH=$replace
 java -version
 
 # Компилируем
-#javac Loader.java
+#javac src/main/java/ru/protei/gc/Loader.java
 
 # Функция для запуска теста
 run_test() {
@@ -41,12 +41,12 @@ run_test "ZGC" "-XX:+UseZGC"
 #run_test "SerialGC" "-XX:+UseSerialGC"
 
 # Анализ результатов
-echo ""
-echo "=== Сводный анализ ==="
-for gc in G1GC ParallelGC ZGC ShenandoahGC SerialGC; do
-    if [ -f "gc_${gc}.log" ]; then
-        echo ""
-        echo "$gc:"
-        grep -E "Pause|Real|Total" gc_${gc}.log | tail -5
-    fi
-done
+#echo ""
+#echo "=== Сводный анализ ==="
+#for gc in G1GC ParallelGC ZGC ShenandoahGC SerialGC; do
+#    if [ -f "gc_${gc}.log" ]; then
+#        echo ""
+#        echo "$gc:"
+#        grep -E "Pause|Real|Total" gc_${gc}.log | tail -5
+#    fi
+#done

@@ -5,7 +5,6 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
 
 public class Loader {
-
     static final int WORKERS = 8;
     static final int OBJECT_SIZE = 1024;
     static final int ALLOC_RATE = 1000;
