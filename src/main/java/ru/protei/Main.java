@@ -2,6 +2,6 @@ package ru.protei;
 
 public class Main {
     void main() {
-        System.out.println();
+        System.out.println("a");
     }
 }
